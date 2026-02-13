@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roshani Investigation</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --accent-color: #bb86fc;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(187, 134, 252, 0.2);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: rgba(187, 134, 252, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+            font-weight: bold;
+        }
+
+        .proposal-box {
+            margin-top: 50px;
+            position: relative;
+            min-height: 350px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.6);
+            z-index: 10;
+        }
+
+        #noBtn {
+            background-color: #333;
+            color: #888;
+            position: absolute;
+        }
+
+        #successMessage {
+            display: none;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-top: 30px;
+            animation: fadeIn 1.5s;
+            background: rgba(187, 134, 252, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>The Roshani Experience</h1>
+
+    <div class="card">
+        <p>It’s hard to explain because it’s just... <span class="highlight">easy with you</span>. Usually, getting to know someone feels like a chore, but with you, I actually look forward to every <span class="highlight">TVD spoiler</span> and every debate on feminism. 😭🫶🏻</p>
+    </div>
+
+    <div class="card">
+        <p>I think it’s because we both know what it’s like to have our <span class="highlight">trust messed with</span>. That’s why we’re getting attached so easily—and tbh, I’m not scared to admit it or scared of getting attached to you.</p>
+    </div>
+
+    <div class="card">
+        <p>You keep telling me I’ll stop liking you once I know the <span class="highlight">"real" you</span>, but honestly, those are the parts I’m most curious about. I don't just want the reels; I want the messy thoughts and even the "bad" habits you warned me about. Most people are only interested in the highlights, but <span class="highlight">I’m here for the whole story</span>. So yeah, you’re definitely losing that bet. 😉</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">Bet Status: <span class="highlight">ROSHANI IS LOSING</span></div>
+    </div>
+
+    <div class="card">
+        <p>Half the time, I have to remind myself to focus on what you're saying because I keep <span class="highlight">getting lost in the vibe</span>... and those eyes. 🫠 Oh, and btw, losing that bet looks very attractive on you. 😉</p>
+    </div>
+
+    <div class="proposal-box">
+        <h2>So, Roshani... It's officially Valentine's Day. Will you be mine? 🌹</h2>
+        <div class="buttons">
+            <button id="yesBtn" onclick="showSuccess()">YES!</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+        <div id="successMessage">
+            ❤️ I knew you couldn't resist losing the bet.<br><br>
+            But since you clicked Yes... does that mean I can <span class="highlight">officially call you mine</span> now? 🥹<br><br>
+            See you on Monday, BABYGIRL! ❤️
+        </div>
+    </div>
+</div>
+
+<script>
+    function moveButton() {
+        const noBtn = document.getElementById('noBtn');
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    }
+
+    function showSuccess() {
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('noBtn').style.display = 'none';
+        document.getElementById('yesBtn').style.display = 'none';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
